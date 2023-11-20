@@ -1,0 +1,20 @@
+diffusion_coefficients:
+  D0: 1
+  D1: 1
+
+model_parameters:
+  a: 1
+  alpha: 1
+  b: 1
+  beta: 1
+  c: 6
+  gamma: 1
+
+integration_parameters:
+  dt: 0.005
+  t_final: 100
+  t_ini: 0.0
+
+fixed_points:
+    u_star: 0.
+    v_star: 0.

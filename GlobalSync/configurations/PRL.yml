@@ -1,0 +1,14 @@
+model_parameters:
+  sigma : !complex 1.0+i4.3 # Complex Numbers as A +- iB with A and B Real numbers (floats)
+  beta : !complex 1.0+i1.1
+  mu : !complex 1.0-i0.5
+  m : 3
+
+integration_parameters:
+  dt: 0.005
+  t_final: 100
+  t_ini: 0.0
+
+# Path: GlobalSync/Matrices/B_Torus.npz. It contains the dictionary with every Boundary operator (B1, B2 etc.)
+# defining the Simplicial complex that hosts the dynamics.
+simplex_boundary_filename: 'B_Torus.npz'
