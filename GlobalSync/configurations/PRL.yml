@@ -11,4 +11,4 @@ integration_parameters:
 
 # Path: GlobalSync/Matrices/B_Torus.npz. It contains the dictionary with every Boundary operator (B1, B2 etc.)
 # defining the Simplicial complex that hosts the dynamics.
-simplex_boundary_filename: 'B_Torus.npz'
+simplex_boundary_filename: 'B_torus.npz'

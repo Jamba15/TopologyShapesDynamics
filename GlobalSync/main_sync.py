@@ -5,7 +5,8 @@ from scipy.integrate import solve_ivp
 config = LoadConfig('PRL.yml')
 
 # Define the level of the simplicial complex. k = 0 is the vertex level, k = 1 is the edge level, etc.
-k = 1
+# In the present version of the code k < 4
+k = 3
 
 # DISPERSION REALATION
 calculate_and_plot_dispersion(config, k)

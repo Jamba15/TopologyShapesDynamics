@@ -24,27 +24,28 @@ def import_matrices(file_name):
     return modified_matrices
 
 
-def get_Laplacian(k, f_name='B_Torus.npz'):
-
+def get_Laplacian(k, f_name):
     Bik = import_matrices(f_name)
     # Adjust for 0-indexing in Python
 
     # Handle Bk
     if k == 0:
-        Bk = np.zeros_like(Bik['B1'])  # Assuming shape from Bik['B1']
+        Bkp1 = Bik['B1']
+        Lkup = - np.dot(Bkp1, Bkp1.T)
+        Lkdwn = np.zeros_like(Lkup)
+        Lk = Lkup.copy()
+
+    elif k == 3:
+        Bk = Bik['B3']
+        Lkdwn = - np.dot(Bk.T, Bk)
+        Lkup = np.zeros_like(Lkdwn)
+        Lk = Lkdwn.copy()
     else:
         Bk = Bik[f'B{k}']
-
-    # Handle Bkp1
-    if k == 3:
-        Bkp1 = np.zeros_like(Bik['B1'])  # Assuming shape from Bik['B1']
-    else:
         Bkp1 = Bik[f'B{k + 1}']
-
-    Lk = -(np.dot(Bk.T, Bk) + np.dot(Bkp1, Bkp1.T))
-
-    Lkup = -np.dot(Bkp1, Bkp1.T)
-    Lkdwn = -np.dot(Bk.T, Bk)
+        Lkup = - np.dot(Bkp1, Bkp1.T)
+        Lkdwn = - np.dot(Bk.T, Bk)
+        Lk = Lkup + Lkdwn
 
     return Lk, Lkup, Lkdwn
 
@@ -159,7 +160,7 @@ def initial_condition(k, config):
     :param pert: Perturbation strength
     :return: The vector of initial conditions concatenated as (u0, v0)
     """
-    Lk, _, _ = get_Laplacian(k)
+    Lk, _, _ = get_Laplacian(k, config['simplex_boundary_filename'])
     nk = Lk.shape[0]
 
     # Define the initial conditions for the dynamical system
@@ -186,5 +187,3 @@ def system_to_integrate(t, w, config, Lk):
 
     # Return the derivative of w
     return dw
-
-

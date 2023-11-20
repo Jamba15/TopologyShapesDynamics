@@ -1,11 +1,13 @@
 import matplotlib.pyplot as plt
+import numpy as np
+
 from functions_sync import *
 import matplotlib.lines as mlines
 
 
 def calculate_and_plot_dispersion(config, k):
 
-    Lk, Lkup, Lkdwn = get_Laplacian(k)
+    Lk, Lkup, Lkdwn = get_Laplacian(k, config['simplex_boundary_filename'])
 
     # Eigenvalues and Eigenvectors
     Lambdak, VVk = np.linalg.eig(Lk)
@@ -88,7 +90,6 @@ def plot_results(sol, k, config):
     ttime = sol.t
     wt = sol.y
     nt = len(ttime)
-    nk = Bk.shape[1]
 
     tmin = 0
     tmax = ttime[-1]
@@ -110,13 +111,13 @@ def plot_results(sol, k, config):
 
 
     # Heatmap of real part of wt
-    im1 = axs[1].imshow(np.real(wt[:, ixt]), aspect='auto', extent=[ttime[ixt].min(), ttime[ixt].max(), 1, nk])
+    im1 = axs[1].imshow(np.real(wt[:, ixt]), aspect='auto', extent=[ttime[ixt].min(), ttime[ixt].max(), 1, wt.shape[0]])
     fig.colorbar(im1, ax=axs[1])
     axs[1].set_xlabel('time')
     axs[1].set_ylabel(r'Real Part of $w(t)$')
 
     # Heatmap of magnitude of wt
-    im2 = axs[2].imshow(np.abs(wt[:, ixt]), aspect='auto', extent=[ttime[ixt].min(), ttime[ixt].max(), 1, nk])
+    im2 = axs[2].imshow(np.abs(wt[:, ixt]), aspect='auto', extent=[ttime[ixt].min(), ttime[ixt].max(), 1, wt.shape[0]])
     fig.colorbar(im2, ax=axs[2])
     axs[2].set_xlabel('time')
     axs[2].set_ylabel('$|w(t)|$')
@@ -139,8 +140,8 @@ def plot_results(sol, k, config):
     R = np.zeros(nt)
     Rw = np.zeros(nt)
     for ii in range(nt):
-        R[ii] = np.abs(np.sum(np.exp(1j * np.angle(wt[:, ii]))) / nk)
-        Rw[ii] = np.abs(np.sum(wt[:, ii]) / nk)
+        R[ii] = np.abs(np.sum(np.exp(1j * np.angle(wt[:, ii]))) / wt.shape[0])
+        Rw[ii] = np.abs(np.sum(wt[:, ii]) / wt.shape[0])
 
     # Plot R and Rw
     axs[0].plot(ttime, R, label='R(t)', linewidth=2)
