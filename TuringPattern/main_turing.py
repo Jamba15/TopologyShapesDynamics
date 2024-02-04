@@ -11,7 +11,7 @@ instability of topological signals coupled by the Dirac operator` by Lorenzo Gia
 Timoteo Carletti and Ginestra Bianconi.
 """
 
-configuration_name = 'Giambagli_etal_PRE.yaml'
+configuration_name = 'Muolo_etal.yaml'
 
 # Load the configuration file
 config = LoadConfig(configuration_name)
