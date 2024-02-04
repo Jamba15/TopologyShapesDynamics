@@ -10,6 +10,20 @@ import numpy as np
 import networkx as nx
 from scipy.sparse import csc_matrix
 import os
+import yaml
+
+current_folder = os.path.dirname(os.path.abspath(__file__))
+
+def config_parser(config_file):
+    # Look for the configuration file in the folder configurations
+    config_file = join(current_folder, 'configurations', config_file)
+    with open(config_file, 'r') as stream:
+        try:
+            config = yaml.safe_load(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+    return config
+
 
 
 def process(D, s_input, m, gamma):
@@ -152,13 +166,12 @@ class signal_elaboration:
             fig.savefig(fig_name)
 
 
-class GraphCreator:
+class SimplicialComplexConstructor:
     def __init__(self, **kwargs):
-        current_folder = os.path.dirname(os.path.abspath(__file__))
         data_folder = join(current_folder,kwargs.get('data_folder', 'Data'))
         csv_file = kwargs.get('csv_file', None)
         edge_list_file = kwargs.get('edge_list_file', None)
-        triangle_file = kwargs.get('triangle_file', None)
+        triangle_file = kwargs.get('triangles_list_file', None)
 
         if csv_file is not None:
             df = pd.read_csv(join(data_folder, csv_file), sep=" ", header=None,
@@ -200,8 +213,7 @@ class GraphCreator:
             self.T = len(self.triangle_list)
 
     def draw_graph(self):
-
-        if self.T == 0:
+        if not hasattr(self, 'triangle_list'):
         # Draw the graph with node labels
             pos = nx.spring_layout(self.G)  # Positioning of nodes
             nx.draw(self.G, pos, with_labels=True, node_color='lightblue', edge_color='gray')
