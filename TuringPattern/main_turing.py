@@ -36,3 +36,5 @@ sol = solve_ivp(system_to_integrate, [t_ini, t_final], y0, method='RK45', args=(
 
 # PLOTTING
 plot_aggregated_results(sol, B)
+
+

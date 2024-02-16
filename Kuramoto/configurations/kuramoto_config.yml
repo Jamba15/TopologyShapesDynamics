@@ -1,0 +1,4 @@
+Tmax: 50
+t_save: 20
+dt: 0.005
+sigma: 50

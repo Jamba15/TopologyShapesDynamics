@@ -30,12 +30,12 @@ def calculate_and_plot_dispersion(config, k):
 
     z0 = np.sqrt(sigma_re / beta_re)
 
-    # Matrici JF e JH
+    # Calculate the Jacobian
     JF = np.array([[-2 * sigma_re, 0], [-2 * beta_im * sigma_re / beta_re, 0]])
     JH = np.array([[z0 ** (m - 1) * m * mu_re, -z0 ** (m - 1) * mu_im],
                    [z0 ** (m - 1) * m * mu_im, z0 ** (m - 1) * mu_re]])
 
-    # Calcolo della legge di dispersione
+    # Evaluate the dispersion relation
     nx = 500
     xx = np.linspace(np.min(np.real(Lambdak)), 0, nx)
     cont_reldisp = np.zeros(nx)
@@ -46,8 +46,13 @@ def calculate_and_plot_dispersion(config, k):
         lambda_vals = np.linalg.eigvals(J)
         cont_reldisp[ii] = np.max(np.real(lambda_vals))
 
-    # Calcolo per diversi Lambdak
+
     def calcola_dispersione(Lambda_values):
+        """
+        Evaluate the dispersion relation for a given set of eigenvalues
+        :param Lambda_values: The eigenvalues to evaluate
+        :return: The dispersion relation evaluated at the given eigenvalues
+        """
         nk = Lambda_values.shape[0]
         dispersion_values = np.zeros(nk)
         for ii in range(nk):
