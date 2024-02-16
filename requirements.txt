@@ -1,0 +1,6 @@
+matplotlib==3.7
+numpy==1.25
+pandas==2.1
+scipy==1.11
+yaml==1.2
+
