@@ -31,11 +31,6 @@ conda env create -f environment.yaml
 conda activate [environment_name]
 ```
 
-7. Install the required packages by running the following command in the terminal:
-
-```
-pip install -r requirements.txt
-```
 
 ### Usage
 
