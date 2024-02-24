@@ -2,7 +2,7 @@ import networkx as nx
 import numpy as np
 from scipy.sparse import csr_matrix, find
 import matplotlib.pyplot as plt
-
+from tqdm import tqdm
 
 def triadic_percolation_simulation_poisson(N, c, cp, cn, Tmax, num):
   '''
@@ -35,10 +35,9 @@ def triadic_percolation_simulation_poisson(N, c, cp, cn, Tmax, num):
   p_list = []
   R_list = []
 
-  for p in np.arange(0, 1, 0.02):
+  for p in tqdm(np.arange(0, 1, 0.02)):
 
     R = np.zeros([Tmax, 1])   # Store the order parameter R for each time step.
-    print(p)
     pL0 = 0.11    # Initial condition
     xL = np.random.rand(L.astype(int), 1)
     # Initialize links. state[l]=1 if the link l is active.
