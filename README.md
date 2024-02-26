@@ -40,6 +40,19 @@ To reproduce the results of a given paper, follow these steps:
 2. Change the parameters in the configuration file if necessary.
 3. Run the cells of the Jupyter Notebook.
 
+### Experiments
+The folders are the following:
+* *GlobalSync*: contains the code to reproduce the results concerning the global synchronization over simplicial and 
+ cell complex of Stuart-Landau oscillators.
+* *TuringPattern*: contains the code to reproduce the results concerning the Turing patterns over simplicial and 
+ cell complex.
+* *Kuramoto*: contains the code to reproduce the results concerning the Kuramoto model over simplicial and 
+ cell complex.
+* SignalProcessing: contains the code to reproduce the results concerning the signal processing over simplicial and 
+ cell complex.
+* TriadicPercolation: contains the code to reproduce the results concerning the triadic percolation over simplicial and 
+ cell complex.
+
 ### Citation
 
 If you use this code, please cite the following paper:
