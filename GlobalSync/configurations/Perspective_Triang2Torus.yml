@@ -1,3 +1,4 @@
+# Configuration file for the Perspective Triangulated 2 Torus example.
 model_parameters:
   sigma : !complex 1.0+i4.3 # Complex Numbers as A +- iB with A and B Real numbers (floats)
   beta : !complex 1.0+i1.1
