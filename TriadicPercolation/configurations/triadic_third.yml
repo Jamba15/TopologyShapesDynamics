@@ -1,0 +1,13 @@
+# A breif description of the parameters in the file
+#       c: Average structural degree of the Poisson network
+#      p: probability of retaining a link after the regulation process
+#      cp: Average positive regulatory degree of the Poisson regulatory network
+#      cn: Average negative regulatory degree of the Poisson regulatory network
+#      Tmax: max duration of the dynamic
+#      num: Number of sample used to plot the orbit diagram
+c : 30
+p : 0.3
+cp : 1.8
+cn : 2.5
+Tmax : 300
+num : 100

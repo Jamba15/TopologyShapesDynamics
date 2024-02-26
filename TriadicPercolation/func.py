@@ -4,8 +4,23 @@ from scipy.sparse import csr_matrix, find
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 from celluloid import Camera
+from os.path import join, dirname, abspath
+import yaml
 
-def triadic_percolation_theory_poisson(c, cp, cn, Tmax, num, regulation="pos_neg"):
+current_folder = dirname(abspath(__file__))
+
+def config_parser(config_file):
+    # Look for the configuration file in the folder configurations
+    config_file = join(current_folder, 'configurations', config_file)
+    with open(config_file, 'r') as stream:
+        try:
+            config = yaml.safe_load(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+    return config
+
+
+def triadic_percolation_theory_poisson(config: dict, regulation="pos_neg"):
     '''
       Theoretical calculation of the orbit diagram of the dynamic
 
@@ -19,6 +34,9 @@ def triadic_percolation_theory_poisson(c, cp, cn, Tmax, num, regulation="pos_neg
               "exclu_neg": Only negative regulations are present and positive regulations are not required
               "none": simple percolation without regulatory interactions
     '''
+
+    c, cp, cn, Tmax, num = config['c'], config['cp'], config['cn'], config['Tmax'], config['num']
+
     R_list = []
     p_list = []
 
@@ -43,7 +61,7 @@ def triadic_percolation_theory_poisson(c, cp, cn, Tmax, num, regulation="pos_neg
 
 
 
-def triadic_percolation_simulation_poisson_movie(N, p, c, cp, cn, Tmax, movie_name, regulation="pos_neg"):
+def triadic_percolation_simulation_poisson_movie(config, movie_name, regulation="pos_neg"):
   '''
     Monte Carlo simulation of the orbit diagram of the dynamic
 
@@ -57,7 +75,7 @@ def triadic_percolation_simulation_poisson_movie(N, p, c, cp, cn, Tmax, movie_na
               "exclu_neg": Only negative regulations are present and positive regulations are not required
 
   '''
-
+  N, p, c, cp, cn, Tmax = config['N'], config['p'], config['c'], config['cp'], config['cn'], config['Tmax']
   a = np.random.rand(N, N)
   a = a < (c/(N-1))
   a = a.astype(int)
@@ -175,7 +193,7 @@ def triadic_percolation_simulation_poisson_movie(N, p, c, cp, cn, Tmax, movie_na
   return 0
 
 
-def triadic_percolation_theory_poisson_time_series(c, p, cp, cn, Tmax, num, regulation="pos_neg"):
+def triadic_percolation_theory_poisson_time_series(config, regulation="pos_neg"):
     '''
       Theoretical calculation of the time series of the dynamic
 
@@ -190,7 +208,7 @@ def triadic_percolation_theory_poisson_time_series(c, p, cp, cn, Tmax, num, regu
               "exclu_neg": Only negative regulations are present and positive regulations are not required
               "none": simple percolation without regulatory interactions
     '''
-
+    c, p, cp, cn, Tmax, num = config['c'], config['p'], config['cp'], config['cn'], config['Tmax'], config['num']
     R_list = []
     T_list = []
     SN2 = 0.9

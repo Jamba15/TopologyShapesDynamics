@@ -9,8 +9,8 @@ This repository contains the code to reproduce the results presented in the pape
     * A configuration file that contains the parameters necessary for the simulations.
     * A Python file that contains the functions.
     * A Jupyter Notebook that contains the code to be launched.
-* The main directory of the repository also contains a `yaml` file with the configurations to give to Anaconda to create the environment.
-
+* The main directory of the repository also contains a `yaml,yml` file with the configurations to give to Anaconda to create the environment.
+Inspect always the configuration file as it contatins also a description of the parameters used in the simulations.
 ### Installation
 
 To install the environment, follow these steps:
@@ -47,7 +47,3 @@ If you use this code, please cite the following paper:
 ```
 [Paper Title](https://paper.co/)
 ```
-
-### Contact
-
-If you have any questions, please contact [Your Name] at [Your Email].
