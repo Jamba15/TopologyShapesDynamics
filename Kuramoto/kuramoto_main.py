@@ -54,7 +54,6 @@ def kuramoto_integrate_and_plot(Psi0, config, B1, B2, B2b, Omega, create_animati
 
         if it >= it_save:
             x1 = B2b[idx_1, 0] * Psi[idx_1]
-            
             X1a[it - it_save] = np.sum(np.exp(1j * x1)) / 8
             x2 = B2b[idx_2, 1] * Psi[idx_2]
             X2a[it - it_save] = np.sum(np.exp(-1j * x2)) / 8
