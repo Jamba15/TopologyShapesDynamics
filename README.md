@@ -3,7 +3,7 @@
 - Explain better each subsection of Experiments section
 - Change name folders to something what is listed below under "Experiments"
 - Abstract/Introductory section
-- ...
+- Maybe change order of the folder such as in section "Experiments"
   
 # Topology Shapes Dynamics
 Higher-order networks capture the many-body interactions present in various empirical complex systems, revealing novel phenomena that shed new light on the interplay between the systems' topology and dynamics. 
