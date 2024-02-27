@@ -410,3 +410,37 @@ def plot_order_parameters(X1a, X2a, figsize=(8, 6), dpi=300):
     ax[1, 1].set_ylabel('Complex phase of  $X_2$')
 
     plt.tight_layout()
+
+
+def plot_order_parameters_v2(X1a, X2a, figsize=(8, 6), dpi=300):
+    """
+    Plots the magnitude and phase of two order parameters (R1a and R2a) over time.
+
+    Args:
+        R1a (numpy.ndarray): A 1D array containing the order parameter R1a values.
+        R2a (numpy.ndarray): A 1D array containing the order parameter R2a values.
+        figsize (tuple, optional): Size of the figure in inches. Defaults to (8, 6).
+        dpi (int, optional): Resolution of the figure in dots per inch. Defaults to 300.
+    """
+
+    fig, ax = plt.subplots(2, 2, dpi=dpi, figsize=figsize)
+
+    # Plot R1a
+    ax[0, 0].plot(np.abs(X1a), linewidth=2)
+    ax[0, 0].set_xlabel('$t$')
+    ax[0, 0].set_ylabel('$R_1$')
+
+    ax[0, 1].plot(np.real(X1a),np.imag(X1a), linewidth=2)
+    ax[0, 1].set_xlabel('$Re(X_1)$')
+    ax[0, 1].set_ylabel(' $Im(X_1)$')
+
+    # Plot R2a
+    ax[1, 0].plot(np.abs(X2a), linewidth=2)
+    ax[1, 0].set_xlabel('$t$')
+    ax[1, 0].set_ylabel('$R_2$')
+
+    ax[1, 1].plot(np.real(X2a),np.imag(X2a), linewidth=2)
+    ax[1, 1].set_xlabel('$Re(X_2)$')
+    ax[1, 1].set_ylabel(' $Im(X_2)$')
+
+    plt.tight_layout()
