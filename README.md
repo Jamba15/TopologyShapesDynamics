@@ -2,7 +2,7 @@
 
 ### Repository Overview
 
-This repository contains the code to reproduce the results presented in the paper "Paper Title: [https://paper.co/](https://paper.co/)". The repository is structured as follows:
+This repository contains the code to reproduce the results presented in the paper "Topology Shapes Dynamics on Higher-Order Networks". The repository is structured as follows:
 
 * Each folder contains the code to reproduce the results of a given paper cited in the main work.
 * The papers are organized with:
@@ -58,5 +58,5 @@ The folders are the following:
 If you use this code, please cite the following paper:
 
 ```
-[Paper Title](https://paper.co/)
+[Topology Shapes Dynamics of Higher Order Networks]
 ```
