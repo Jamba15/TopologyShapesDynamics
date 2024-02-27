@@ -66,7 +66,7 @@ To reproduce the results of a given paper, follow these steps:
  contains the code for Topological Turing patterns for node and edge topological signals.
  
  ### DiracSignalProcess:
- contains the code for Dirac Signal processing of node, edge and triangle topological signals over simplicial complexes.
+ contains the code for Dirac Signal Processing of node, edge and triangle topological signals over simplicial complexes.
 
  ### TriadicPercolation:
  contains the code for Triadic percolation on Poisson networks with triadic interactions.
