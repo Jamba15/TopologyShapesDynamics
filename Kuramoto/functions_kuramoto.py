@@ -380,7 +380,7 @@ def kuramoto_integrate_and_plot(Psi0, config, B1, B2, B2b, Omega, create_animati
 
         if create_animation and it % 20 == 0:
             fig = plt.figure(figsize=(6, 3), dpi=100)
-            plot_octogons(x, y, I, J, Psi, save=True, filename=f'octogons_{it}')
+            plot_octogons(x, y, I, J, Number_of_filled_cells, Psi, save=True, filename=f'octogons_{it}')
             plt.close(fig)
 
     if create_animation:
