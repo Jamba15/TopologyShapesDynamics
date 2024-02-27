@@ -274,8 +274,8 @@ def plot_octogons(x, y, I, J, Psi=None, colormap="rainbow", save=False, filename
         # Normalize Psi for colormapping
         Psi_normalized = (Psi + np.pi) / (2 * np.pi)  # Map [-pi, pi] to [0, 1]
     else:
-        # Set title to "Plotting the structure" 
-        plt.title("Plotting the structure")
+        # Set title to "Plotting the network skeleton of the cell complex" 
+        plt.title("The network skeleton of the cell complex")
         Psi_normalized = None
 
     # Check if cc is a string or a Colormap object
@@ -378,13 +378,13 @@ def kuramoto_integrate_and_plot(Psi0, config, B1, B2, B2b, Omega, create_animati
 
 import matplotlib.pyplot as plt
 
-def plot_order_parameters(R1a, R2a, figsize=(8, 6), dpi=300):
+def plot_order_parameters(X1a, X2a, figsize=(8, 6), dpi=300):
     """
     Plots the magnitude and phase of two order parameters (R1a and R2a) over time.
 
     Args:
-        R1a (numpy.ndarray): A 1D array containing the order parameter R1a values.
-        R2a (numpy.ndarray): A 1D array containing the order parameter R2a values.
+        X1a (numpy.ndarray): A 1D array containing the complex order parameter X1a values.
+        X2a (numpy.ndarray): A 1D array containing the complex order parameter X2a values.
         figsize (tuple, optional): Size of the figure in inches. Defaults to (8, 6).
         dpi (int, optional): Resolution of the figure in dots per inch. Defaults to 300.
     """
@@ -392,21 +392,21 @@ def plot_order_parameters(R1a, R2a, figsize=(8, 6), dpi=300):
     fig, ax = plt.subplots(2, 2, dpi=dpi, figsize=figsize)
 
     # Plot R1a
-    ax[0, 0].plot(np.abs(R1a), linewidth=2)
+    ax[0, 0].plot(np.abs(X1a), linewidth=2)
     ax[0, 0].set_xlabel('$t$')
     ax[0, 0].set_ylabel('$R_1$')
 
-    ax[0, 1].plot(np.angle(R1a), linewidth=2)
+    ax[0, 1].plot(np.angle(X1a), linewidth=2)
     ax[0, 1].set_xlabel('$t$')
-    ax[0, 1].set_ylabel('Collective Phase $Z_1$')
+    ax[0, 1].set_ylabel('Complex phase of  $X_1$')
 
     # Plot R2a
-    ax[1, 0].plot(np.abs(R2a), linewidth=2)
+    ax[1, 0].plot(np.abs(X2a), linewidth=2)
     ax[1, 0].set_xlabel('$t$')
     ax[1, 0].set_ylabel('$R_2$')
 
-    ax[1, 1].plot(np.angle(R2a), linewidth=2)
+    ax[1, 1].plot(np.angle(X2a), linewidth=2)
     ax[1, 1].set_xlabel('$t$')
-    ax[1, 1].set_ylabel('Collective Phase $Z_2$')
+    ax[1, 1].set_ylabel('Complex phase of  $X_2$')
 
     plt.tight_layout()
