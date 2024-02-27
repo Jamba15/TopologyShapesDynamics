@@ -54,23 +54,22 @@ To reproduce the results of a given paper, follow these steps:
 3. Run the cells of the Jupyter Notebook.
 
 # Experiments 
-### GlobalSync:
- contains the code to reproduce the results concerning the global synchronization over simplicial and 
- cell complex of Stuart-Landau oscillators.
 
- ### TuringPattern:
- contains the code to reproduce the results concerning the global synchronization over simplicial and 
- cell complex of Stuart-Landau oscillators.
- ### Kuramoto:
- contains the code to reproduce the results concerning the global synchronization over simplicial and 
- cell complex of Stuart-Landau oscillators.
- ### SignalProcessing:
- contains the code to reproduce the results concerning the global synchronization over simplicial and 
- cell complex of Stuart-Landau oscillators.
+ ### TopKuramoto:
+ contains the code for Topological Kuramoto model for eddge topological signals over simplicial and cell complexes.
+ 
+  ### TopGlobalSync:
+ contains the code for Topological Global Synchronization over simplicial and 
+ cell complex using  Stuart-Landau oscillators.
+
+ ### TopTuringPattern:
+ contains the code for Topological Turing patterns for node and edge topological signals.
+ 
+ ### DiracSignalProcess:
+ contains the code for Dirac Signal processing of node, edge and triangle topological signals over simplicial complexes.
 
  ### TriadicPercolation:
- contains the code to reproduce the results concerning the global synchronization over simplicial and 
- cell complex of Stuart-Landau oscillators.
+ contains the code for Triadic percolation on Poisson networks with triadic interactions.
 
 
 ## Citation
