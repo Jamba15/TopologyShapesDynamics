@@ -257,7 +257,7 @@ def find(pattern, path):
                 result.append(os.path.join(root, name))
     return result
 
-def plot_octogons(x, y, I, J, Psi=None, colormap="rainbow", save=False, filename="octogons.png"):
+def plot_octogons(x, y, I, J, Number_of_filled_cells,Psi=None, colormap="rainbow", save=False, filename="octogons.png"):
     """Plots the octogon structure with edges color-coded according to their phase.
 
     Args:
@@ -268,6 +268,14 @@ def plot_octogons(x, y, I, J, Psi=None, colormap="rainbow", save=False, filename
     """
 
     cc_off = (255. / 255., 171. / 255., 91. / 255., 1)  # Node color
+
+    I1=[0,1,2,3,4,5,6,7]
+    I2=[0,8,9,10,11,12,13,1]
+    
+    xp1=x[I1]
+    yp1=y[I1]
+    xp2=x[I2]
+    yp2=y[I2]
 
     if Psi is not None:
         plt.title("Phase of the edges")
@@ -292,7 +300,14 @@ def plot_octogons(x, y, I, J, Psi=None, colormap="rainbow", save=False, filename
     else:
         for n in range(len(I)):
             plt.plot([x[I[n]], x[J[n]]], [y[I[n]], y[J[n]]], color='black', linewidth=4)
-
+    
+    #Fill the cells
+    if Number_of_filled_cells==1:
+        plt.fill(xp1,yp1)
+     if Number_of_filled_cells==2:
+        plt.fill(xp1,yp1)  
+        plt.fill(xp2,yp2) 
+         
     # Plot nodes with fixed color
     plt.scatter(x, y, color=cc_off, s=100, label='Nodes')
     plt.axis('off') 
