@@ -443,7 +443,7 @@ def plot_order_parameters(X1a, X2a, figsize=(8, 6), dpi=300):
     # Plot R1a
     ax[0, 0].plot(np.abs(X1a), linewidth=2)
     ax[0, 0].set_xlabel('$t$')
-    ax[0, 0].set_ylabel('$R_1$')
+    ax[0, 0].set_ylabel('$R_1=|X_1|$')
 
     ax[0, 1].plot(np.real(X1a),np.imag(X1a), linewidth=2)
     ax[0, 1].set_xlabel('$Re(X_1)$')
@@ -452,7 +452,7 @@ def plot_order_parameters(X1a, X2a, figsize=(8, 6), dpi=300):
     # Plot R2a
     ax[1, 0].plot(np.abs(X2a), linewidth=2)
     ax[1, 0].set_xlabel('$t$')
-    ax[1, 0].set_ylabel('$R_2$')
+    ax[1, 0].set_ylabel('$R_2=|X_2|$')
 
     ax[1, 1].plot(np.real(X2a),np.imag(X2a), linewidth=2)
     ax[1, 1].set_xlabel('$Re(X_2)$')
