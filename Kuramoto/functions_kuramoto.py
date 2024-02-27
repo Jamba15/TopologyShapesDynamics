@@ -304,7 +304,7 @@ def plot_octogons(x, y, I, J, Number_of_filled_cells, Psi=None, colormap="rainbo
     #Fill the cells
     if Number_of_filled_cells==1:
         plt.fill(xp1,yp1,facecolor='lightgrey')
-     if Number_of_filled_cells==2:
+    elif Number_of_filled_cells==2:
         plt.fill(xp1,yp1,facecolor='lightgrey')  
         plt.fill(xp2,yp2,facecolor='lightgrey') 
          
