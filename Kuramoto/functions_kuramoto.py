@@ -427,35 +427,48 @@ def plot_order_parameters_old(X1a, X2a, figsize=(8, 6), dpi=300):
     plt.tight_layout()
 
 
-def plot_order_parameters(X1a, X2a, figsize=(8, 6), dpi=300):
+   
+def plot_order_parameters(X1, X2, Number_of_filled_cells, figsize=(8, 6), dpi=300):
     """
     Plots the magnitude and phase of two order parameters (R1a and R2a) over time.
 
     Args:
-        R1a (numpy.ndarray): A 1D array containing the order parameter R1a values.
-        R2a (numpy.ndarray): A 1D array containing the order parameter R2a values.
+        X1 (numpy.ndarray): A 1D array containing the complex order parameter X1 values.
+        X2 (numpy.ndarray): A 1D array containing the complex order parameter X2 values.
         figsize (tuple, optional): Size of the figure in inches. Defaults to (8, 6).
         dpi (int, optional): Resolution of the figure in dots per inch. Defaults to 300.
     """
 
     fig, ax = plt.subplots(2, 2, dpi=dpi, figsize=figsize)
 
-    # Plot R1a
-    ax[0, 0].plot(np.abs(X1a), linewidth=2)
+    # Plot X1
+    
+    ax[0, 0].plot(np.abs(X1), linewidth=2)
     ax[0, 0].set_xlabel('$t$')
     ax[0, 0].set_ylabel('$R_1=|X_1|$')
 
-    ax[0, 1].plot(np.real(X1a),np.imag(X1a), linewidth=2)
+    if Number_of_filled_cells<2: 
+        ax[0, 1].plot(np.real(X1),np.imag(X1), linewidth=2)
+    else:
+        ax[0, 1].plot(np.real(X1),np.imag(X1), 'o-',linewidth=2)
     ax[0, 1].set_xlabel('$Re(X_1)$')
     ax[0, 1].set_ylabel(' $Im(X_1)$')
 
-    # Plot R2a
-    ax[1, 0].plot(np.abs(X2a), linewidth=2)
+
+
+    # Plot X2
+    ax[1, 0].plot(np.abs(X2), linewidth=2)
     ax[1, 0].set_xlabel('$t$')
     ax[1, 0].set_ylabel('$R_2=|X_2|$')
 
-    ax[1, 1].plot(np.real(X2a),np.imag(X2a), linewidth=2)
+    if Number_of_filled_cells<2: 
+        ax[1, 1].plot(np.real(X2),np.imag(X2), linewidth=2)
+    else:
+        ax[1, 1].plot(np.real(X2),np.imag(X2), 'o-',linewidth=2)
     ax[1, 1].set_xlabel('$Re(X_2)$')
     ax[1, 1].set_ylabel(' $Im(X_2)$')
 
+    
     plt.tight_layout()
+    
+ 
