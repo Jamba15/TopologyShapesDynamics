@@ -257,7 +257,7 @@ def find(pattern, path):
                 result.append(os.path.join(root, name))
     return result
 
-def plot_octogons(x, y, I, J, Number_of_filled_cells,Psi=None, colormap="rainbow", save=False, filename="octogons.png"):
+def plot_octogons(x, y, I, J, Number_of_filled_cells, Psi=None, colormap="rainbow", save=False, filename="octogons.png"):
     """Plots the octogon structure with edges color-coded according to their phase.
 
     Args:
