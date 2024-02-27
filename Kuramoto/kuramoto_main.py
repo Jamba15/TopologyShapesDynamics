@@ -55,8 +55,10 @@ def kuramoto_integrate_and_plot(Psi0, config, B1, B2, B2b, Omega, create_animati
         if it >= it_save:
             x1 = B2b[idx_1, 0] * Psi[idx_1]
             R1a[it - it_save] = np.sum(np.exp(1j * x1)) / 8
+            X1a[it - it_save] = np.sum(np.exp(1j * x1)) / 8
             x2 = B2b[idx_2, 1] * Psi[idx_2]
             R2a[it - it_save] = np.sum(np.exp(-1j * x2)) / 8
+            X2a[it - it_save] = np.sum(np.exp(-1j * x2)) / 8
 
         if create_animation and it % 20 == 0:
             fig = plt.figure(figsize=(6, 3), dpi=100)
@@ -68,7 +70,7 @@ def kuramoto_integrate_and_plot(Psi0, config, B1, B2, B2b, Omega, create_animati
         input_directory = join(this_dir, 'animations')
         output_gif_name = "kuramoto_octagons.gif"
         create_gif(input_directory, output_gif_name)
-    return R1a, R2a
+    return X1a,X2a,R1a, R2a
 
 initial_conditions = np.random.rand(B1.shape[1]) * 2 * np.pi
 kuramoto_integrate_and_plot(initial_conditions, config, B1, B2, Omega, create_animation=True)
