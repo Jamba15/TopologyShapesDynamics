@@ -97,7 +97,7 @@ class signal_elaboration:
         # x_min=True selects true signal aligned to the eigenvector associated to the smallest positive eigenvalue
         # x_min= False selects true signal aligned to the eigenvector associated to the largest positive eigenvalue
         # Gaussian=True selects gaussian noise Gaussian=False select noise having only contribution coming from vector
-        # with negative chiarality
+        # with negative chirality
         """
                 Plots the results of signal processing with options for different noise types and eigenvalue alignments.
 
