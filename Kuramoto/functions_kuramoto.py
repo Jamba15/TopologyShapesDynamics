@@ -378,7 +378,7 @@ def kuramoto_integrate_and_plot(Psi0, config, B1, B2, B2b, Omega, create_animati
 
 import matplotlib.pyplot as plt
 
-def plot_order_parameters(X1a, X2a, figsize=(8, 6), dpi=300):
+def plot_order_parameters_old(X1a, X2a, figsize=(8, 6), dpi=300):
     """
     Plots the magnitude and phase of two order parameters (R1a and R2a) over time.
 
@@ -412,7 +412,7 @@ def plot_order_parameters(X1a, X2a, figsize=(8, 6), dpi=300):
     plt.tight_layout()
 
 
-def plot_order_parameters_v2(X1a, X2a, figsize=(8, 6), dpi=300):
+def plot_order_parameters(X1a, X2a, figsize=(8, 6), dpi=300):
     """
     Plots the magnitude and phase of two order parameters (R1a and R2a) over time.
 
