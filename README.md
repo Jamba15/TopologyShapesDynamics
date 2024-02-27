@@ -1,3 +1,10 @@
+
+# TODO: 
+- Explain better each subsection of Experiments section
+- Change folders to something more related
+- Abstract/Introductory section
+- ...
+  
 # Topology Shapes Dynamics
 Higher-order networks capture the many-body interactions present in various empirical complex systems, revealing novel phenomena that shed new light on the interplay between the systems' topology and dynamics. 
 The emerging theory of higher-order topological dynamics, combining higher-order structures with discrete topology and non-linear dynamics, has the potential to play a fundamental role for the understanding of complex systems such as the brain and climate, as well as for the development of a new generation of AI algorithms.
@@ -47,8 +54,6 @@ To reproduce the results of a given paper, follow these steps:
 3. Run the cells of the Jupyter Notebook.
 
 # Experiments 
-TODO: Use the words of the Paper
-
 ### GlobalSync:
  contains the code to reproduce the results concerning the global synchronization over simplicial and 
  cell complex of Stuart-Landau oscillators.
