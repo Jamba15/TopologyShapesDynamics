@@ -1,7 +1,7 @@
 
 # TODO: 
 - Explain better each subsection of Experiments section
-- Change folders to something more related
+- Change name folders to something what is listed below under "Experiments"
 - Abstract/Introductory section
 - ...
   
