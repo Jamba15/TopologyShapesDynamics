@@ -40,7 +40,7 @@ To reproduce the results of a given paper, follow these steps:
 2. Change the parameters in the configuration file if necessary.
 3. Run the cells of the Jupyter Notebook.
 
-### Experiments
+### Experiments TODO: Use the words of the Paper
 The folders are the following:
 * *GlobalSync*: contains the code to reproduce the results concerning the global synchronization over simplicial and 
  cell complex of Stuart-Landau oscillators.
