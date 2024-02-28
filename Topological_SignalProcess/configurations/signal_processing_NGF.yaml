@@ -1,0 +1,11 @@
+# Configuration parameters for the script
+# The class SimplicialComplexConstructor needs input parameters to be set in the config file.
+# Now it can either take a single csv file that contains the information of the graph
+# or it can take two files that contain the information of the edges and triangles of the graph.
+
+simplicial_complex_constructor:
+  edge_list_file : "NGF_edgelist.txt"
+  triangles_list_file : "NGF_triangles_d2.txt"
+
+save_results_fig : False
+
