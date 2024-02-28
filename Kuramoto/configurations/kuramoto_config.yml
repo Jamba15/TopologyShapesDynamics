@@ -1,4 +1,0 @@
-Tmax: 50  # Max integration time
-t_save: 20
-dt: 0.005
-sigma: 50

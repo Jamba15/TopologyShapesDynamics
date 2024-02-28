@@ -1,13 +1,10 @@
-import os
-import sys
-file_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(file_dir)
-sys.path.append(parent_dir)
 import fnmatch
 import os
 from os.path import join, dirname, abspath
 import yaml
 import numpy as np
+import re
+
 
 def import_matrices(file_name):
     """
@@ -27,6 +24,32 @@ def import_matrices(file_name):
     return modified_matrices
 
 
+def get_Laplacian(k, f_name):
+    Bik = import_matrices(f_name)
+    # Adjust for 0-indexing in Python
+
+    # Handle Bk
+    if k == 0:
+        Bkp1 = Bik['B1']
+        Lkup = - np.dot(Bkp1, Bkp1.T)
+        Lkdwn = np.zeros_like(Lkup)
+        Lk = Lkup.copy()
+
+    elif k == 3:
+        Bk = Bik['B3']
+        Lkdwn = - np.dot(Bk.T, Bk)
+        Lkup = np.zeros_like(Lkdwn)
+        Lk = Lkdwn.copy()
+    else:
+        Bk = Bik[f'B{k}']
+        Bkp1 = Bik[f'B{k + 1}']
+        Lkup = - np.dot(Bkp1, Bkp1.T)
+        Lkdwn = - np.dot(Bk.T, Bk)
+        Lk = Lkup + Lkdwn
+
+    return Lk, Lkup, Lkdwn
+
+
 class PrettySafeLoader(yaml.SafeLoader):
     def construct_python_tuple(self, node):
         return tuple(self.construct_sequence(node))
@@ -34,6 +57,16 @@ class PrettySafeLoader(yaml.SafeLoader):
     # create constructor for !path tag
     def construct_path(self, node):
         return os.path.normpath(self.construct_scalar(node))
+
+    def construct_complex(self, node):
+        value = self.construct_scalar(node)
+        # Utilizzare espressioni regolari per estrarre le parti reale e immaginaria
+        match = re.match(r"([+-]?[0-9.]+)\s*([+-])\s*i([0-9.]+)", value)
+        if match:
+            real, sign, imag = match.groups()
+            return complex(float(real), float(imag) if sign == '+' else -float(imag))
+        else:
+            raise ValueError(f"Non è possibile convertire '{value}' in un numero complesso")
 
 
 def LoadConfig(config_name, hyper=None):
@@ -100,6 +133,10 @@ PrettySafeLoader.add_constructor(
     '!path',
     PrettySafeLoader.construct_path)
 
+PrettySafeLoader.add_constructor(
+    '!complex',
+    PrettySafeLoader.construct_complex)
+
 
 def find(pattern, path):
     result = []
@@ -110,8 +147,11 @@ def find(pattern, path):
                 result.append(os.path.join(root, name))
     return result
 
+
 """ Function for dynamical system integration"""
-def initial_condition(nodes, links, config, pert=1E-4):
+
+
+def initial_condition(k, config):
     """
     This function defines the initial conditions for the dynamical system
     :param nodes: Dimension of the u vector (number of nodes)
@@ -120,56 +160,30 @@ def initial_condition(nodes, links, config, pert=1E-4):
     :param pert: Perturbation strength
     :return: The vector of initial conditions concatenated as (u0, v0)
     """
+    Lk, _, _ = get_Laplacian(k, config['simplex_boundary_filename'])
+    nk = Lk.shape[0]
 
-    u_star = config['fixed_points']['u_star']
-    v_star = config['fixed_points']['v_star']
-    # Define the initial conditions with random perturbations
-    u_pert = 1 - 2 * np.random.rand(nodes, 1)  # Random array for u perturbation
-    v_pert = 1 - 2 * np.random.rand(links, 1)  # Random array for v perturbation
-
-    # Assuming u_star and v_star are the fixed points for u and v, respectively
-    u0 = u_star + pert * u_pert.flatten()  # Flatten to convert from 2D to 1D if necessary
-    v0 = v_star + pert * v_pert.flatten()  # Flatten to convert from 2D to 1D if necessary
-
-    # Combine u0 and v0 to create the initial condition array for the entire system
-    y0 = np.concatenate((u0, v0))
+    # Define the initial conditions for the dynamical system
+    w_init = np.random.rand(nk) + 1j * np.random.rand(nk)
 
     t_ini = config['integration_parameters']['t_ini']
     t_final = config['integration_parameters']['t_final']
-    return t_ini, t_final, y0
+    return t_ini, t_final, w_init, Lk
 
 
 # Define the system of differential equations to integrate
-def system_to_integrate(t, y, config, B, L0, L1):
+def system_to_integrate(t, w, config, Lk):
     # Define and parse the model_parameters
-    a = config['model_parameters']['a']
-    alpha = config['model_parameters']['alpha']
-    b = config['model_parameters']['b']
+
+    sigma = config['model_parameters']['sigma']
     beta = config['model_parameters']['beta']
-    c = config['model_parameters']['c']
-    gamma = config['model_parameters']['gamma']
+    mu = config['model_parameters']['mu']
+    m = config['model_parameters']['m']
 
-    # Define and parse the diffusion_coefficients
-    D0 = config['diffusion_coefficients'].get('D0', 0)
-    D1 = config['diffusion_coefficients'].get('D1', 0)
-    D01 = config['diffusion_coefficients'].get('D01', 0)
-    D10 = config['diffusion_coefficients'].get('D10', 0)
+    f = sigma * w - beta * np.abs(w) ** 2 * w
+    Hz = w * np.abs(w) ** (m - 1)
 
-    # The vector y contains both u and v variables
-    # Let's split y into u and v. Assuming u and v are concatenated one after the other in y:
-    num_nodes = np.shape(L0)[0]  # Assuming L0 is a square matrix and num_nodes is the number of nodes
+    dw = f + mu * np.dot(Lk, Hz)
 
-    u = y[:num_nodes]
-    v = y[num_nodes:]
-
-    # Compute f and g as defined in the MATLAB code
-    f = -a * u - b * u**3 + c * (B @ v)
-    g = -alpha * v - beta * v**3 + gamma * (B.T @ u)
-
-    # Compute the derivatives of u and v
-    du = f - D0 * (L0 @ u) - D01 * L0 @ (B @ v)
-    dv = g - D1 * (L1 @ v) - D10 * L1 @ (B.T @ u)
-
-    # Return the concatenated derivatives of u and v
-    return np.concatenate((du, dv))
-
+    # Return the derivative of w
+    return dw

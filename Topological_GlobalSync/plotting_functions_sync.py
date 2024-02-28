@@ -83,7 +83,7 @@ def calculate_and_plot_dispersion(config, k):
     plt.show()
 
 
-def plot_results(sol, k, config):
+def plot_trajectories(sol, k, config, **kwargs):
     # Extract B matrices according to k
     Bk = None
     Bkp1 = None
@@ -96,91 +96,61 @@ def plot_results(sol, k, config):
     wt = sol.y
     nt = len(ttime)
 
-    tmin = 50 # 0 Changed tmin to 50
+    tmin = kwargs.get('tmin', 50)
     tmax = ttime[-1]
     ixt = np.where((ttime > tmin) & (ttime < tmax))[0]
 
     # Prepare figure with multiple subplots
-    fig, axs = plt.subplots(3, 1, dpi=200, figsize=(6, 8))
+    fig, axs = plt.subplots(2, 1, dpi=200, figsize=(6, 8))
     # Set overall title
-    fig.suptitle(f'Trajectories, k = {k}', fontfamily='serif', fontsize=16)
-    # Plot real and imaginary parts of wt
-    # axs[0].plot(ttime[ixt], np.real(wt[:, ixt]).T, 'r')
-    axs[0].plot(ttime[ixt], np.imag(wt[:, ixt]).T, 'b')
+    fig.suptitle(f'Trajectories', fontfamily='serif', fontsize=16)
+
+    # Plot real and imaginary parts of wt as two different plots
+    axs[0].plot(ttime[ixt], np.real(wt[:, ixt]).T, 'r')
     axs[0].set_xlabel('time')
-    axs[0].set_ylabel(r'$\mathcal{Re}, \mathcal{Im}$ of $w(t)$')
+    axs[0].set_ylabel(r'$\mathcal{Re}(w(t))$')
 
-    line_re = mlines.Line2D([], [], color='red', label=r'$\mathcal{Re}$')
-    line_im = mlines.Line2D([], [], color='blue', label=r'$\mathcal{Im}$')
-    axs[0].legend(handles=[line_re, line_im], loc='upper right')
-
-
-    # Heatmap of real part of wt
-    im1 = axs[1].imshow(np.real(wt[:, ixt]), aspect='auto', extent=[ttime[ixt].min(), ttime[ixt].max(), 1, wt.shape[0]])
-    fig.colorbar(im1, ax=axs[1])
+    axs[1].plot(ttime[ixt], np.imag(wt[:, ixt]).T, 'b')
     axs[1].set_xlabel('time')
-    axs[1].set_ylabel(r'Real Part of $w(t)$')
-
-    # Heatmap of magnitude of wt
-    im2 = axs[2].imshow(np.abs(wt[:, ixt]), aspect='auto', extent=[ttime[ixt].min(), ttime[ixt].max(), 1, wt.shape[0]])
-    fig.colorbar(im2, ax=axs[2])
-    axs[2].set_xlabel('time')
-    axs[2].set_ylabel('$|w(t)|$')
+    axs[1].set_ylabel(r'$\mathcal{Im}(w(t))$')
 
     plt.tight_layout()
     plt.show()
 
-    num_subplots = 1  # Base per R e Rw
-    if k != 0 and Bk is not None:
-        num_subplots += 1
-    if k != 3 and Bkp1 is not None:
-        num_subplots += 1
 
-    fig2, axs = plt.subplots(num_subplots, 1, dpi=200, figsize=(5, num_subplots * 2.8))
-
-    if num_subplots == 1:
-        axs = [axs]  # Assicurati che axs sia una lista
+def plot_order_parameter(sol):
+    ttime = sol.t
+    wt = sol.y
+    nt = len(ttime)
 
     # Compute R and Rw
-    R = np.zeros(nt)
+    R = np.zeros(nt, dtype=complex)
     Rw = np.zeros(nt)
+
     for ii in range(nt):
-        R[ii] = np.abs(np.sum(np.exp(1j * np.angle(wt[:, ii]))) / wt.shape[0])
+        R[ii] = (np.sum(np.abs(wt[:, ii]) * np.exp(1j * np.angle(wt[:, ii]))) / wt.shape[0])
         Rw[ii] = np.abs(np.sum(wt[:, ii]) / wt.shape[0])
 
-    # Plot R and Rw
-    axs[0].plot(ttime, R, label='R(t)', linewidth=2)
-    axs[0].plot(ttime, Rw, label='Rw(t)', linewidth=2)
-    axs[0].set_xlabel('time')
-    axs[0].set_ylabel('$R(t)$ and $R_w(t)$')
-    axs[0].legend()
-    axs[0].set_title(f'Order parameters, k = {k}', fontfamily='serif', fontsize=13)
-    # Index per tracciare i subplot aggiuntivi
-    subplot_index = 1
+    tsave = int(np.floor(nt * 4 / 5))
+    # print(tsave, nt)
 
-    # Additional plots for Bkwt and Bkp1wt if k is specified
-    if k != 0 and Bk is not None:
-        Bkwt = Bk @ wt
-        axs[subplot_index].plot(ttime[ixt], np.real(Bkwt[:, ixt]).T, 'r')
-        axs[subplot_index].plot(ttime[ixt], np.imag(Bkwt[:, ixt]).T, 'b')
-        axs[subplot_index].set_xlabel('time')
-        axs[subplot_index].set_ylabel(f'$B_{{{k}}}$' + '$w(t)$')
-        line_re = mlines.Line2D([], [], color='red', label=r'$\mathcal{Re}$')
-        line_im = mlines.Line2D([], [], color='blue', label=r'$\mathcal{Im}$')
-        axs[subplot_index].legend(handles=[line_re, line_im], loc='upper right')
-        axs[subplot_index].set_title(f'Projected down signal', fontfamily='serif', fontsize=13)
-        subplot_index += 1
+    fig, ax = plt.subplots(1, 2, dpi=300, figsize=(6, 3))
 
-    if k != 3 and Bkp1 is not None:
-        Bkp1wt = Bkp1.T @ wt
-        axs[subplot_index].plot(ttime[ixt], np.real(Bkp1wt[:, ixt]).T, 'r')
-        axs[subplot_index].plot(ttime[ixt], np.imag(Bkp1wt[:, ixt]).T, 'b')
-        axs[subplot_index].set_xlabel('time')
-        axs[subplot_index].set_ylabel(f'$B_{{{k+1}}}^T$' + '$w(t)$')
-        line_re = mlines.Line2D([], [], color='red', label=r'$\mathcal{Re}$')
-        line_im = mlines.Line2D([], [], color='blue', label=r'$\mathcal{Im}$')
-        axs[subplot_index].legend(handles=[line_re, line_im], loc='upper right')
-        axs[subplot_index].set_title(f'Projected up signal', fontfamily='serif', fontsize=13)
+    # Plot X1
+
+    ax[0].plot(np.abs(R), linewidth=2)
+    ax[0].set_xlabel('$t$')
+    ax[0].set_ylabel('$R=|X|$')
+    ax[0].set_title(f'Real order parameter', fontfamily='serif', fontsize=13)
+
+    ax[1].plot(np.real(R[-tsave:-1]), np.imag(R[-tsave:-1]), linewidth=2)
+
+    ax[1].set_xlabel('$Re(X)$')
+    ax[1].set_ylabel(' $Im(X)$')
+    ax[1].set_title(f'Complex order parameter', fontfamily='serif', fontsize=13)
 
     plt.tight_layout()
     plt.show()
+    
+    
+    

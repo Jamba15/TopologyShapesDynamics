@@ -1,4 +1,4 @@
-name: NaturePerspective
+name: TopologyShapesDynamics
 
 channels:
   - conda-forge

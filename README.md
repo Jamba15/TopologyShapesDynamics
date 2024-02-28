@@ -58,7 +58,7 @@ To reproduce the results of a given paper, follow these steps:
  ### TopKuramoto:
  contains the code for Topological Kuramoto model for eddge topological signals over simplicial and cell complexes.
  
-  ### TopGlobalSync:
+ ### TopGlobalSync:
  contains the code for Topological Global Synchronization over simplicial and 
  cell complex using  Stuart-Landau oscillators.
 
@@ -79,3 +79,6 @@ If you use this code, please cite the following paper:
 ```
 [Topology Shapes Dynamics of Higher Order Networks]
 ```
+
+## Main Contributors
+TODO:
