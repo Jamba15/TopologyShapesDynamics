@@ -1,8 +1,5 @@
 import matplotlib.pyplot as plt
-import numpy as np
-
 from functions_sync import *
-import matplotlib.lines as mlines
 
 
 def calculate_and_plot_dispersion(config, k):
