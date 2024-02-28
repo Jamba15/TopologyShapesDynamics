@@ -1,17 +1,11 @@
-
-# TODO: 
-- Explain better each subsection of Experiments section
-- Change name folders to something what is listed below under "Experiments"
-- Abstract/Introductory section
-- Maybe change order of the folder such as in section "Experiments"
-  
 # Topology Shapes Dynamics
-Higher-order networks capture the many-body interactions present in various empirical complex systems, revealing novel phenomena that shed new light on the interplay between the systems' topology and dynamics. 
-The emerging theory of higher-order topological dynamics, combining higher-order structures with discrete topology and non-linear dynamics, has the potential to play a fundamental role for the understanding of complex systems such as the brain and climate, as well as for the development of a new generation of AI algorithms.
-A new theoretical framework to describe network dynamics that goes beyond the node-centered description adopted so far thus emerges. In this novel theoretical framework, the dynamics of a network is encoded by topological signals, i.e., variables associated to  the nodes as well as to 
-the edges (like fluxes), to the triangles, or even to other higher-order cells of higher-order networks.
-One important challenge is  to model, mine, and process these signals to formulate a deeper physical and mathematical theory of complex systems. Recently it has been shown that topological signals lead to the emergence of novel types of dynamical states and collective phenomena such as topological synchronization, topological  pattern formation and triadic percolation. They offer novel paradigms to understand  how topology shapes dynamics, how dynamics learns the underlying network topology, and how topology  varies dynamically. 
-This Perspective aims at guiding physicists, mathematicians, computer scientists and network scientists from different disciplines, in the growing field of topological signals, as well as at delineating challenges that must be addressed by future research. 
+Higher-order networks encode complex interactions within systems, offering deeper insights into the relationship between
+structure and behavior. By integrating higher-order structures, topology, and dynamics, we can develop powerful new models 
+for systems ranging from neuroscience to climate science. Network dynamics can be described using topological signals – variables 
+associated with nodes, edges, and higher-order network elements. Understanding these signals will reveal new dynamical states
+(e.g., topological synchronization) and advance our understanding of how networks evolve. This repository contains the code to
+reproduce the results presented in the paper "Topology Shapes Dynamics on Higher-Order Networks" and shows numerically how
+topological signals shape the dynamics of higher-order networks. 
 
 ## Repository Overview
 
@@ -44,7 +38,6 @@ conda env create -f environment.yaml
 conda activate [environment_name]
 ```
 
-
 ### Usage
 
 To reproduce the results of a given paper, follow these steps:
@@ -55,30 +48,32 @@ To reproduce the results of a given paper, follow these steps:
 
 # Experiments 
 
- ### TopKuramoto:
- contains the code for Topological Kuramoto model for eddge topological signals over simplicial and cell complexes.
+ ### Topological_Kuramoto:
+ Contains the code for **Topological Kuramoto model** for edge topological signals over simplicial and cell complexes. The 
+code refers to Supplementary Material of the paper, *Section II D1*.
  
- ### TopGlobalSync:
- contains the code for Topological Global Synchronization over simplicial and 
- cell complex using  Stuart-Landau oscillators.
+ ### Topological_GlobalSync:
+ Contains the code for **Topological Global Synchronization** over simplicial and cell complex using Stuart-Landau oscillators.
+The code refers to Supplementary Material of the paper, *Section II D2*.
 
- ### TopTuringPattern:
- contains the code for Topological Turing patterns for node and edge topological signals.
+ ### Topological_PatternFormation:
+ Contains the code for **Topological Turing patterns** for node and edge topological signals. The code refers to Supplementary
+ Material of the paper, section III C.
  
- ### DiracSignalProcess:
- contains the code for Dirac Signal Processing of node, edge and triangle topological signals over simplicial complexes.
-
+ ### Topological_SignalProcess:
+ Contains the code for **Dirac Signal Processing** of node, edge and triangle topological signals over simplicial complexes.
+The code refers to Supplementary Material of the paper, *Section IV B*.
  ### TriadicPercolation:
- contains the code for Triadic percolation on Poisson networks with triadic interactions.
+ Contains the code for **Triadic Percolation** on Poisson networks with triadic interactions. The code refers to Supplementary
+ Material of the paper, *Section V B*.
 
 
 ## Citation
-
 If you use this code, please cite the following paper:
 
 ```
 [Topology Shapes Dynamics of Higher Order Networks]
 ```
 
-## Main Contributors
-TODO:
+## Code Contributors
+Ginestra Bianconi, Timoteo Carletti, Lorenzo Giambagli, Ana P. Millán, Riccardo Muolo, Hanlin Sun
