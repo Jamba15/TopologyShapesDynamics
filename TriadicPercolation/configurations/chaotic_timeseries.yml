@@ -1,10 +1,12 @@
-# A breif description of the parameters in the file
+# A brief description of the parameters in the file
 #       c: Average structural degree of the Poisson network
-#      p: probability of retaining a link after the regulation process
+#      p: the probability of retaining a link after the regulation process
 #      cp: Average positive regulatory degree of the Poisson regulatory network
 #      cn: Average negative regulatory degree of the Poisson regulatory network
 #      Tmax: max duration of the dynamic
-#      num: Number of sample used to plot the orbit diagram
+#      num: Number of points in the time series.
+
+# The parameters show a chaotic time series of the order parameter of triadic percolation.
 c : 30
 p : 0.3
 cp : 1.8
