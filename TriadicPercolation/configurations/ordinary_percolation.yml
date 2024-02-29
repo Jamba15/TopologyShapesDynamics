@@ -1,9 +1,11 @@
-# A breif description of the parameters in the file
+# A brief description of the parameters in the file
 #      c: Average structural degree of the Poisson network
 #      cp: Average positive regulatory degree of the Poisson regulatory network
 #      cn: Average negative regulatory degree of the Poisson regulatory network
 #      Tmax: max duration of the dynamic
-#      num: Number of sample used to plot the orbit diagram
+#      num: Number of samples used to plot the orbit diagram
+
+# The following parameters show the phase diagram of ordinary percolation without triadic interactions
 c: 30
 cp: 0
 cn: 0    # cp and cn do not play a role here.
