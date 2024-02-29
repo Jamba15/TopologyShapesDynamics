@@ -197,7 +197,7 @@ def triadic_percolation_simulation_poisson_movie(config, movie_name, regulation=
     # Create the folder if it does not exist
     makedirs(folder_name, exist_ok=True)
 
-    animation.save(join(folder_name, movie_name), writer='imagemagick', fps=5)
+    animation.save(join(folder_name, movie_name+".gif"), writer='imagemagick', fps=5)
     return 0
 
 
