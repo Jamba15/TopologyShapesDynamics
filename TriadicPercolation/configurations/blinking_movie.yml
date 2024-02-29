@@ -5,9 +5,8 @@
 #      cp: Average positive regulatory degree of the Poisson regulatory network
 #      cn: Average negative regulatory degree of the Poisson regulatory network
 #      Tmax: max duration of the dynamic
-#      num: Number of samples used to plot the orbit diagram
 
-# The parameters show the movie of blinking.
+# The parameters show the movie of a blinking dynamics.
 N : 100
 p : 1
 c : 6
