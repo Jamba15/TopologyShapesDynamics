@@ -1,0 +1,16 @@
+# A brief description of the parameters in the file
+#      N: number of nodes
+#      c: Average structural degree of the Poisson network
+#      p: the probability of retaining a link after the regulation process
+#      cp: Average positive regulatory degree of the Poisson regulatory network
+#      cn: Average negative regulatory degree of the Poisson regulatory network
+#      Tmax: max duration of the dynamic
+#      num: Number of samples used to plot the orbit diagram
+
+# The parameters show the movie of blinking.
+N : 100
+p : 1
+c : 6
+cp : 0
+cn : 2
+Tmax : 50
