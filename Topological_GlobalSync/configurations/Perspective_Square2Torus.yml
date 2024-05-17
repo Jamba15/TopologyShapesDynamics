@@ -11,5 +11,5 @@ integration_parameters:
   t_ini: 0.0
 
 # Path: GlobalSync/Matrices/NAME.npz. It contains the dictionary with every Boundary operator (B1, B2 etc.)
-# defining the Simplicial complex that hosts the dynamics.
+# defining the Cell complex that hosts the dynamics.
 simplex_boundary_filename: 'B_Square2Torus.npz'
