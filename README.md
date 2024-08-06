@@ -67,8 +67,7 @@ The code refers to Supplementary Material of the paper, *Section IV B*.
  Material of the paper, *Section V B*.
 
 ### Supplementary Videos
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ovvEvuMcACQ" frameborder="0" allowfullscreen></iframe>
-
+[![Video Title](https://img.youtube.com/vi/ovvEvuMcACQ/0.jpg)](https://www.youtube.com/watch?v=ovvEvuMcACQ)
 
 https://youtu.be/ovvEvuMcACQ
 
