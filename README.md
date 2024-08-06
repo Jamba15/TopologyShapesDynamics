@@ -67,9 +67,25 @@ The code refers to Supplementary Material of the paper, *Section IV B*.
  Material of the paper, *Section V B*.
 
 ### Supplementary Videos
-[![Video Title](https://img.youtube.com/vi/ovvEvuMcACQ/0.jpg)](https://www.youtube.com/watch?v=ovvEvuMcACQ)
 
-https://youtu.be/ovvEvuMcACQ
+#### Global Synchronization
+[![Video 1](https://img.youtube.com/vi/JsVgUlLGjBA/0.jpg)](https://www.youtube.com/watch?v=JsVgUlLGjBA)
+
+[![Video 2](https://img.youtube.com/vi/U9BPaknoDjI/0.jpg)](https://www.youtube.com/watch?v=U9BPaknoDjI)
+
+[![Video 3](https://img.youtube.com/vi/VdwB8Ad0YK0/0.jpg)](https://www.youtube.com/watch?v=VdwB8Ad0YK0)
+
+[![Video 4](https://img.youtube.com/vi/ovvEvuMcACQ/0.jpg)](https://www.youtube.com/watch?v=ovvEvuMcACQ)
+
+[![Video 5](https://img.youtube.com/vi/GS5nNGhMP7M/0.jpg)](https://www.youtube.com/watch?v=GS5nNGhMP7M)
+
+[![Video 7](https://img.youtube.com/vi/YlXS0S9Mhlg/0.jpg)](https://www.youtube.com/watch?v=YlXS0S9Mhlg)
+
+[![Video 8](https://img.youtube.com/vi/NdAtzNtaHJ4/0.jpg)](https://www.youtube.com/watch?v=NdAtzNtaHJ4)
+
+[![Video 9](https://img.youtube.com/vi/--SoKcyrPfI/0.jpg)](https://www.youtube.com/watch?v=--SoKcyrPfI)
+
+[![Video 10](https://img.youtube.com/vi/fWg0BG8Dtks/0.jpg)](https://www.youtube.com/watch?v=fWg0BG8Dtks)
 
 ## Citation
 If you use this code, please cite the following paper:
