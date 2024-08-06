@@ -66,6 +66,11 @@ The code refers to Supplementary Material of the paper, *Section IV B*.
  Contains the code for **Triadic Percolation** on Poisson networks with triadic interactions. The code refers to Supplementary
  Material of the paper, *Section V B*.
 
+### Supplementary Videos
+[![Supplementary Video 4]]([https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE](https://youtu.be/ovvEvuMcACQ
+))
+
+https://youtu.be/ovvEvuMcACQ
 
 ## Citation
 If you use this code, please cite the following paper:
