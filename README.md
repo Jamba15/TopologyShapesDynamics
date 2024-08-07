@@ -13,6 +13,7 @@ This repository contains the code to reproduce the results presented in the pape
 The repository is structured as follows:
 
 SUPPLEMENTARY MATERIAL:
+
 The [Supplementary Material](Supplementary%20Material.pdf) includes background information on Topology and Dynamics of higher-order networks and we
 provide details about the figures of the main text, the Supplementary Videos and the Supporting
 Codes
