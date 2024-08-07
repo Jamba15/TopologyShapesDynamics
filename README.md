@@ -11,7 +11,11 @@ topological signals shape the dynamics of higher-order networks.
 
 This repository contains the code to reproduce the results presented in the paper "Topology Shapes Dynamics on Higher-Order Networks" and relevant supplementary material. 
 The repository is structured as follows:
-SUPPLEMENTARY MATERIAL:
+
+<u>SUPPLEMENTARY MATERIAL:</u>
+The [Supplementary Information](Supplementary Material.pdf) includes background information on Topology and Dynamics of higher-order networks and we
+provide details about the figures of the main text, the Supplementary Videos and the Supporting
+Codes
 
 
 CODE:
