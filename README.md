@@ -12,8 +12,8 @@ topological signals shape the dynamics of higher-order networks.
 This repository contains the code to reproduce the results presented in the paper "Topology Shapes Dynamics on Higher-Order Networks" and relevant supplementary material. 
 The repository is structured as follows:
 
-<u>SUPPLEMENTARY MATERIAL:</u>
-The [Supplementary Information](Supplementary Material.pdf) includes background information on Topology and Dynamics of higher-order networks and we
+SUPPLEMENTARY MATERIAL:
+The [Supplementary Material](Supplementary%20Material.pdf) includes background information on Topology and Dynamics of higher-order networks and we
 provide details about the figures of the main text, the Supplementary Videos and the Supporting
 Codes
 
@@ -54,31 +54,39 @@ To reproduce the results of a given paper, follow these steps:
 2. Change the parameters in the configuration file if necessary.
 3. Run the cells of the Jupyter Notebook.
 
-# Experiments 
+## Citation
+If you use this code, please cite the following paper:
+
+```
+[Topology Shapes Dynamics of Higher Order Networks]
+```
+
+## Experiments 
 
  ### Topological_Kuramoto:
  Contains the code for **Topological Kuramoto model** for edge topological signals over simplicial and cell complexes. The 
-code refers to Supplementary Material of the paper, *Section II D1*.
+code refers to [Supplementary Material](Supplementary%20Material.pdf) of the paper, *Section II D1*.
  
  ### Topological_GlobalSync:
  Contains the code for **Topological Global Synchronization** over simplicial and cell complex using Stuart-Landau oscillators.
-The code refers to Supplementary Material of the paper, *Section II D2*.
+The code refers to [Supplementary Material](Supplementary%20Material.pdf) of the paper, *Section II D2*.
 
  ### Topological_PatternFormation:
- Contains the code for **Topological Turing patterns** for node and edge topological signals. The code refers to Supplementary
- Material of the paper, section III C.
+ Contains the code for **Topological Turing patterns** for node and edge topological signals. The code refers to [Supplementary Material](Supplementary%20Material.pdf) of the paper, section III C.
  
  ### Topological_SignalProcess:
  Contains the code for **Dirac Signal Processing** of node, edge and triangle topological signals over simplicial complexes.
-The code refers to Supplementary Material of the paper, *Section IV B*.
+The code refers to [Supplementary Material](Supplementary%20Material.pdf) of the paper, *Section IV B*.
+
+
  ### TriadicPercolation:
- Contains the code for **Triadic Percolation** on Poisson networks with triadic interactions. The code refers to Supplementary
- Material of the paper, *Section V B*.
+ Contains the code for **Triadic Percolation** on Poisson networks with triadic interactions. The code refers to [Supplementary Material](Supplementary%20Material.pdf) of the paper, *Section V B*.
 
-### Supplementary Videos
+## Supplementary Videos
 
+### Topological Synchronization
+Visualization of the Topological Synchronization in Kuramoto model. See [Supplementary Material](Supplementary%20Material.pdf) of the paper, *Section II D1*.
 
-#### Topological Synchronization
 One Hole - Video 1
 
 [![Video 1](https://img.youtube.com/vi/JsVgUlLGjBA/0.jpg)](https://www.youtube.com/watch?v=JsVgUlLGjBA)
@@ -92,7 +100,8 @@ No Holes - Video 3
 [![Video 3](https://img.youtube.com/vi/VdwB8Ad0YK0/0.jpg)](https://www.youtube.com/watch?v=VdwB8Ad0YK0)
 
 
-#### Topological Global Synchronization
+### Topological Global Synchronization
+Visualisation of Topological Global Synchronization in Stuart-Landau model. See [Supplementary Material](Supplementary%20Material.pdf) of the paper, *Section II D2*.
 
 Squares - Video 4
 
@@ -103,8 +112,8 @@ Edges - Video 5
 [![Video 5](https://img.youtube.com/vi/GS5nNGhMP7M/0.jpg)](https://www.youtube.com/watch?v=GS5nNGhMP7M)
 
 
-#### Topological Patterns
-
+### Topological Patterns
+Visualization of Topological Turing and Dirac patterns. See [Supplementary Material](Supplementary%20Material.pdf) of the paper, *Section III C*.
 Turing - Video 7
 
 [![Video 7](https://img.youtube.com/vi/YlXS0S9Mhlg/0.jpg)](https://www.youtube.com/watch?v=YlXS0S9Mhlg)
@@ -114,7 +123,8 @@ Dirac - Video 8
 [![Video 8](https://img.youtube.com/vi/NdAtzNtaHJ4/0.jpg)](https://www.youtube.com/watch?v=NdAtzNtaHJ4)
 
 
-#### Triadic Percolation
+### Triadic Percolation
+Visualization of active nodes in Triadic Percolation. See [Supplementary Material](Supplementary%20Material.pdf) of the paper, *Section V B*.
 
 Blinking - Video 9
 
@@ -124,12 +134,7 @@ Chaos - Video 10
 
 [![Video 10](https://img.youtube.com/vi/fWg0BG8Dtks/0.jpg)](https://www.youtube.com/watch?v=fWg0BG8Dtks)
 
-## Citation
-If you use this code, please cite the following paper:
 
-```
-[Topology Shapes Dynamics of Higher Order Networks]
-```
 
 ## Code Contributors
 Ginestra Bianconi, Timoteo Carletti, Lorenzo Giambagli, Jürgen Kurths, Ana P. Millán, Riccardo Muolo, Filippo Radicchi, Hanlin Sun, Joaquìn J. Torres
