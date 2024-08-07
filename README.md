@@ -9,14 +9,19 @@ topological signals shape the dynamics of higher-order networks.
 
 ## Repository Overview
 
-This repository contains the code to reproduce the results presented in the paper "Topology Shapes Dynamics on Higher-Order Networks". The repository is structured as follows:
+This repository contains the code to reproduce the results presented in the paper "Topology Shapes Dynamics on Higher-Order Networks" and relevant supplementary material. 
+The repository is structured as follows:
+SUPPLEMENTARY MATERIAL:
 
+
+CODE:
 * Each folder contains the code to reproduce the results of a given paper cited in the main work.
 * The folders are organized with:
     * A configuration folder that contains the parameters necessary for the simulations. Always inspect the configuration file as it contatins also a description of the parameters used in the simulations.
     * Python files that contain functions or the main script.
     * A Jupyter Notebook that contains the code to be launched.
 * The main directory of the repository also contains a `yaml` file with the configurations to give to Anaconda to create the environment.
+
 ### Installation
 
 To install the environment, follow these steps:
@@ -67,6 +72,7 @@ The code refers to Supplementary Material of the paper, *Section IV B*.
  Material of the paper, *Section V B*.
 
 ### Supplementary Videos
+
 
 #### Topological Synchronization
 One Hole - Video 1
@@ -122,4 +128,5 @@ If you use this code, please cite the following paper:
 ```
 
 ## Code Contributors
-Ginestra Bianconi, Timoteo Carletti, Lorenzo Giambagli, Ana P. Millán, Riccardo Muolo, Hanlin Sun
+Ginestra Bianconi, Timoteo Carletti, Lorenzo Giambagli, Jürgen Kurths, Ana P. Millán, Riccardo Muolo, Filippo Radicchi, Hanlin Sun, Joaquìn J. Torres
+
